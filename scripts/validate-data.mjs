@@ -70,6 +70,7 @@ export async function validateAll() {
   for (const g of data.guides.guides) {
     if (g.providerId !== null && !providerIds.has(g.providerId)) errors.push(`guides.${g.id}: providerId "${g.providerId}" לא קיים`);
     for (const step of g.steps) {
+      if (step.skip && !(step.skip.to >= 0 && step.skip.to < g.steps.length)) errors.push(`guides.${g.id}: skip.to מחוץ לטווח`);
       if (step.helper && !guideIds.has(step.helper.guideId)) errors.push(`guides.${g.id}: מדריך עזר "${step.helper.guideId}" לא קיים`);
       if (step.image && !existsSync(new URL(step.image.src, root))) errors.push(`guides.${g.id}: התמונה ${step.image.src} לא קיימת`);
     }

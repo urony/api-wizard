@@ -209,19 +209,31 @@ function recommendation() {
   wrapper.append(providerCard(top, result.mode));
   wrapper.append(h('button', { type: 'button', class: 'btn', onclick: () => go({ screen: 'guide', providerId: top.id, step: 0 }) }, 'השיגו לי מפתח מהספק הזה'));
 
-  if (others.length > 0) {
-    wrapper.append(h('h2', {}, 'ספקים אחרים'));
-    const list = h('ul', { class: 'choice-list' });
-    for (const provider of others) {
-      list.append(h('li', {}, h('button', {
-        type: 'button',
-        class: 'btn choice',
-        onclick: () => go({ screen: 'guide', providerId: provider.id, step: 0 }),
-      }, provider.name, h('small', {}, `${provider.summary} (${show(provider.freeTier, FREE_LABELS)})`))));
-    }
-    wrapper.append(list);
+  const freeOthers = others.filter(isFreeOption);
+  const paidOthers = others.filter((provider) => !isFreeOption(provider));
+  if (freeOthers.length > 0) {
+    wrapper.append(h('h2', {}, 'ספקים חינמיים נוספים'), providerChoices(freeOthers));
+  }
+  if (paidOthers.length > 0) {
+    wrapper.append(h('details', { class: 'paid-providers' },
+      h('summary', {}, `ספקים בתשלום (${paidOthers.length})`),
+      h('p', {}, 'מתאים אם הכלי שלכם דורש במיוחד אחד מהספקים האלה. לא אומת שיש להם מסלול API חינמי.'),
+      providerChoices(paidOthers),
+    ));
   }
   return wrapper;
+}
+
+function providerChoices(items) {
+  const list = h('ul', { class: 'choice-list' });
+  for (const provider of items) {
+    list.append(h('li', {}, h('button', {
+      type: 'button',
+      class: 'btn choice',
+      onclick: () => go({ screen: 'guide', providerId: provider.id, step: 0 }),
+    }, provider.name, h('small', {}, `${provider.summary} (${show(provider.freeTier, FREE_LABELS)})`))));
+  }
+  return list;
 }
 
 function compatibilityNote(result) {
@@ -277,7 +289,11 @@ function providerCard(provider) {
     stale ? ' ' : null,
     stale ? h('span', { class: 'badge' }, 'דורש בדיקה מחדש') : null,
   ));
-  if (provider.verificationLevel === 'desk_research') {
+  if (provider.verificationLevel === 'manually_verified') {
+    card.append(h('p', { class: 'notice' }, `ההרשמה ויצירת המפתח נבדקו בפועל מישראל (${provider.lastVerified}). פרטים שמסומנים "לא אומת" עדיין לא נבדקו.`));
+  } else if (provider.verificationLevel === 'partially_verified') {
+    card.append(h('p', { class: 'notice' }, `ההרשמה נבדקה בפועל מישראל (${provider.lastVerified}). חלק מהפרטים עדיין לא אומתו.`));
+  } else if (provider.verificationLevel === 'desk_research') {
     card.append(h('p', { class: 'notice' }, 'המידע נאסף מתיעוד ומאתרים ברשת, ועדיין לא נבדק בהרשמה אמיתית. לפני החלטה חשובה, ודאו אצל הספק.'));
   }
   if (days !== null && days < 0) {
@@ -328,9 +344,25 @@ function guide() {
     ));
   }
 
+  const defaultLink = !isHelper && index === 0 && !guideData.noDefaultLink
+    ? { url: provider.apiKeyUrl, label: `פתחו את עמוד המפתחות של ${provider.name}` }
+    : null;
+  const stepLink = step.link || defaultLink;
+  if (stepLink) {
+    view.append(h('p', {}, externalLink(stepLink.url, stepLink.label, 'btn')));
+    const firstLinkIndex = guideData.noDefaultLink ? steps.findIndex((s) => s.link) : 0;
+    if (index === firstLinkIndex) {
+      view.append(h('p', { class: 'notice' }, 'האתר ייפתח בחלון נפרד. כדי לראות אותו לצד ההסברים כאן, הצמידו כל חלון לצד אחד של המסך (במקלדת של Windows: מקש Windows וחץ ימינה או שמאלה).'));
+    }
+  }
+  if (step.skip) {
+    view.append(h('button', {
+      type: 'button',
+      class: 'btn btn-secondary',
+      onclick: () => go({ ...state, step: step.skip.to, depth: state.depth }, { replace: true }),
+    }, step.skip.label));
+  }
   if (!isHelper && index === 0) {
-    view.append(h('p', {}, externalLink(provider.apiKeyUrl, `פתחו את עמוד המפתחות של ${provider.name}`, 'btn')));
-    view.append(h('p', { class: 'notice' }, 'עמוד המפתחות ייפתח בחלון נפרד. כדי לראות אותו לצד ההסברים כאן, הצמידו כל חלון לצד אחד של המסך (במקלדת של Windows: מקש Windows וחץ ימינה או שמאלה).'));
     if (provider.requiresIdentityVerification === 'phone') {
       view.append(h('p', { class: 'notice' }, 'שימו לב: אצל ספק זה נדרש אימות טלפון.'));
     }

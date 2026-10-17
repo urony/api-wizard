@@ -160,6 +160,9 @@ a { color: var(--primary); text-underline-offset: 0.15em; }
 .tip h2 { margin-top: 0; }
 .btn-tip { background: var(--tip-border); border-color: var(--tip-border); color: var(--tip-text); }
 
+.paid-providers { margin: 0 0 1.25rem; border: 1px solid var(--border); border-radius: 0.6rem; padding: 0.25rem 1rem 0.5rem; }
+.paid-providers summary { cursor: pointer; font-weight: 700; min-height: 2.75rem; display: flex; align-items: center; }
+
 .badge {
   display: inline-block;
   padding: 0.05rem 0.55rem;

@@ -48,7 +48,7 @@
     },
     {
       "id": "model-not-found",
-      "patterns": ["model[_ ]not[_ ]found", "does not exist", "unknown model", "model.*not supported", "no endpoints found", "invalid model"],
+      "patterns": ["model[_ ]not[_ ]found", "does not exist", "no longer available", "unknown model", "model.*not supported", "no endpoints found", "invalid model"],
       "title": "המודל לא נמצא",
       "explanation": "הכלי ביקש מודל שאינו קיים או שאינו זמין למפתח הזה.",
       "suggestions": [
