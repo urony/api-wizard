@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>אשף ה־API למורים</title>
+  <meta name="description" content="עוזר למורים להשיג מפתח API לכלי הוראה מבוססי בינה מלאכותית, צעד אחר צעד.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">דלגו לתוכן</a>
+  <header class="site-header">
+    <div class="container header-row">
+      <p class="site-name">אשף ה־<bdi dir="ltr">API</bdi> למורים</p>
+      <nav class="header-nav" aria-label="ניווט">
+        <button type="button" id="back-button" class="btn btn-link" hidden>← חזרה</button>
+        <button type="button" id="home-button" class="btn btn-link" hidden>מסך ראשי</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <noscript><p class="notice">האתר דורש JavaScript כדי לעבוד.</p></noscript>
+    <div id="app" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>האתר לא מבקש, לא שומר ולא שולח מפתחות <bdi dir="ltr">API</bdi>. הוא מדריך אתכם בלבד, והמפתח נוצר אצל הספק.</p>
+      <p id="footer-links"></p>
+    </div>
+  </footer>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

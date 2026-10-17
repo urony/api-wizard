@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "submissionUrl": "https://github.com/urony/api-wizard/issues/new",
+  "tools": [
+    {
+      "id": "cardiac-simulator",
+      "name": "סימולטור קרדיאלי",
+      "owner": "אורי",
+      "description": "כלי הוראה לסימולציה של פעילות הלב.",
+      "officialUrl": null,
+      "supportedProviders": [],
+      "protocols": [],
+      "restrictedModels": [],
+      "pasteInstructions": "הדביקו את המפתח בשדה ה־API Key בהגדרות הכלי.",
+      "compatibilityVerified": null
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "submissionUrl", "tools"],
+  "properties": {
+    "schemaVersion": { "enum": [1] },
+    "submissionUrl": { "type": "string", "pattern": "^https://" },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "owner", "description", "officialUrl", "supportedProviders", "protocols", "restrictedModels", "pasteInstructions", "compatibilityVerified"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,39}$" },
+          "name": { "type": "string" },
+          "owner": { "type": "string" },
+          "description": { "type": "string" },
+          "officialUrl": { "type": ["string", "null"], "pattern": "^https://" },
+          "supportedProviders": { "type": "array", "items": { "type": "string" } },
+          "protocols": { "type": "array", "items": { "enum": ["native", "openai-chat-completions", "openai-responses"] } },
+          "restrictedModels": { "type": "array", "items": { "type": "string" } },
+          "pasteInstructions": { "type": "string" },
+          "compatibilityVerified": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+        }
+      }
+    }
+  }
+}

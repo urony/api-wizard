@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "errors": [
+    {
+      "id": "invalid-key",
+      "patterns": ["\\b401\\b", "invalid[_ ]api[_ ]key", "incorrect api key", "unauthorized", "api key not valid", "invalid authentication"],
+      "title": "המפתח לא זוהה (שגיאה 401)",
+      "explanation": "הספק לא הכיר את המפתח שנשלח.",
+      "suggestions": [
+        "בדקו שהעתקתם את כל המפתח, בלי רווח בהתחלה או בסוף.",
+        "ודאו שהמפתח הוא של הספק הנכון. מפתח של ספק אחד לא עובד אצל ספק אחר.",
+        "אם המפתח נמחק או הוחלף, צרו מפתח חדש."
+      ]
+    },
+    {
+      "id": "permission",
+      "patterns": ["\\b403\\b", "permission[_ ]denied", "forbidden", "not allowed", "access denied"],
+      "title": "אין הרשאה (שגיאה 403)",
+      "explanation": "המפתח תקין אבל החשבון או המפתח אינם מורשים לפעולה הזאת.",
+      "suggestions": [
+        "ייתכן שהמודל דורש הרשאה או תשלום.",
+        "ייתכן שהחשבון חסום באזור שלכם או בארגון שלכם. בדקו את מדיניות הארגון.",
+        "נסו מודל אחר או ספק אחר."
+      ]
+    },
+    {
+      "id": "quota",
+      "patterns": ["insufficient[_ ]quota", "billing[_ ]required", "exceeded your current quota", "quota exceeded", "\\b402\\b", "payment required", "out of credits", "credit balance", "resource[_ ]exhausted"],
+      "title": "נגמרה המכסה או הקרדיט",
+      "explanation": "המכסה החינמית או הקרדיט נגמרו, או שהחשבון דורש אמצעי תשלום.",
+      "suggestions": [
+        "בדקו בחשבון אצל הספק מה נשאר במכסה.",
+        "ייתכן שהמכסה מתחדשת מחר או בתחילת החודש. מועד החידוש משתנה בין ספקים.",
+        "אפשר לעבור לספק אחר בעל מכסה חינמית.",
+        "אל תפתחו חשבונות נוספים כדי לעקוף את המגבלה. זה בדרך כלל מנוגד לתנאי השימוש."
+      ]
+    },
+    {
+      "id": "rate-limit",
+      "patterns": ["\\b429\\b", "rate[_ ]limit", "too many requests", "requests per minute", "\\brpm\\b"],
+      "title": "יותר מדי בקשות בזמן קצר (שגיאה 429)",
+      "explanation": "נשלחו בקשות מהר מדי. זה שונה מסיום המכסה: בדרך כלל מספיק לחכות.",
+      "suggestions": [
+        "המתינו דקה ונסו שוב.",
+        "אם הכלי משמש כמה תלמידים במקביל, ייתכן שכולם משתמשים באותו מפתח. נסו לפזר את השימוש.",
+        "אם השגיאה חוזרת לאורך זמן, ייתכן שהמכסה היומית נגמרה."
+      ]
+    },
+    {
+      "id": "model-not-found",
+      "patterns": ["model[_ ]not[_ ]found", "does not exist", "unknown model", "model.*not supported", "no endpoints found", "invalid model"],
+      "title": "המודל לא נמצא",
+      "explanation": "הכלי ביקש מודל שאינו קיים או שאינו זמין למפתח הזה.",
+      "suggestions": [
+        "בדקו אם הכלי מאפשר לבחור מודל אחר.",
+        "ייתכן שהמודל הוסר או שדורש תשלום.",
+        "בדקו אצל הספק מהם המודלים הזמינים עבורכם."
+      ]
+    },
+    {
+      "id": "not-found",
+      "patterns": ["\\b404\\b", "not found"],
+      "title": "הכתובת או המשאב לא נמצאו (שגיאה 404)",
+      "explanation": "ייתכן שהכלי פונה לכתובת או למודל שאינם קיימים.",
+      "suggestions": [
+        "בדקו שבחרתם בכלי את הספק הנכון.",
+        "בדקו אם הכלי מעודכן לגרסה האחרונה."
+      ]
+    },
+    {
+      "id": "server-error",
+      "patterns": ["\\b500\\b", "\\b502\\b", "\\b503\\b", "\\b504\\b", "internal server error", "service unavailable", "overloaded", "bad gateway"],
+      "title": "תקלה בצד הספק (שגיאה 5xx)",
+      "explanation": "הבעיה כנראה אצל הספק ולא אצלכם.",
+      "suggestions": [
+        "המתינו כמה דקות ונסו שוב.",
+        "בדקו את עמוד הסטטוס של הספק אם קיים."
+      ]
+    },
+    {
+      "id": "timeout",
+      "patterns": ["timeout", "timed out", "etimedout"],
+      "title": "הבקשה ארכה יותר מדי",
+      "explanation": "הבקשה לא הסתיימה בזמן.",
+      "suggestions": [
+        "בדקו את חיבור האינטרנט.",
+        "נסו שוב, ואם אפשר נסו בקשה קצרה יותר או מודל קטן יותר."
+      ]
+    },
+    {
+      "id": "cors-network",
+      "patterns": ["cors", "cross-origin", "failed to fetch", "network[_ ]?error", "networkerror", "err_network", "net::"],
+      "title": "בעיית רשת או CORS",
+      "explanation": "הדפדפן לא הצליח להגיע לספק, או חסם את הבקשה. לפעמים זה קשור לרשת בית הספר ולפעמים לאופן שבו הכלי בנוי.",
+      "suggestions": [
+        "נסו מרשת אחרת, למשל נקודה חמה בטלפון.",
+        "בדקו אם חומת אש או סינון בבית הספר חוסמים את הספק.",
+        "אם זה קורה רק בכלי מסוים, פנו למפתח הכלי."
+      ]
+    },
+    {
+      "id": "region",
+      "patterns": ["not available in your (country|region)", "unsupported (country|region)", "location is not supported", "region.*not supported", "country.*not supported"],
+      "title": "השירות לא זמין באזור שלכם",
+      "explanation": "הספק לא תומך באזור או במדינה שלכם.",
+      "suggestions": [
+        "בדקו בדף התנאים של הספק אילו מדינות נתמכות.",
+        "נסו ספק אחר. אל תשתמשו בכלים לעקיפת חסימות אזוריות, כי זה עלול להפר תנאי שימוש."
+      ]
+    }
+  ],
+  "fallback": {
+    "title": "לא זיהינו את השגיאה",
+    "explanation": "ההודעה לא דומה לאחת השגיאות הנפוצות.",
+    "suggestions": [
+      "העתיקו רק את שורת השגיאה הראשית ונסו שוב.",
+      "בדקו את תיעוד הספק או פנו למפתח הכלי.",
+      "אם יש בהודעה קוד שגיאה (למשל מספר בן שלוש ספרות), חפשו אותו בשם הספק."
+    ]
+  }
+}
