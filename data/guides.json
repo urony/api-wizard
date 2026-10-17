@@ -102,12 +102,15 @@
     {
       "id": "xai",
       "providerId": "xai",
+      "noDefaultLink": true,
       "steps": [
-        {"title":"מה חשוב לדעת לפני שמתחילים","text":"ה־API של xAI מחויב בקרדיטים שנרכשים מראש, וללא החזר. לא אומת מסלול חינמי. שימו לב: המדריך הזה מבוסס על תיעוד, ועדיין לא נבדק בהרשמה אמיתית ואין בו צילומי מסך."},
-        {"title":"התחברו לקונסולה","text":"לחצו על הכפתור למטה והתחברו או הירשמו."},
-        {"title":"הוסיפו קרדיט אם נדרש","text":"ייתכן שתצטרכו לרכוש קרדיטים לפני שהמפתח יעבוד. חפשו את אזור [[Billing]]."},
-        {"title":"צרו מפתח","text":"בעמוד [[API Keys]] צרו מפתח חדש."},
-        {"title":"העתיקו ושמרו","text":"העתיקו את המפתח ושמרו אותו במקום פרטי."}
+        {"title":"לפני שמתחילים: זה מסלול בתשלום","text":"בבדיקה בפועל, יצירת מפתח שמדבר עם מודלי Grok ([[Grok Inference]]) דורשת אמצעי תשלום וקרדיט שנטען מראש. לא מצאנו מסלול חינמי ל־API. לפי עמוד התמחור הרשמי, המחיר במודל grok-4.3 הוא כ־1.25 דולר למיליון טוקנים של קלט וכ־2.5 דולר של פלט (המחירים משתנים). אם אתם מחפשים אפשרות חינמית, מומלץ לבחור ספק אחר, למשל Gemini או Groq. אם אתם בכל זאת צריכים xAI, הנה מה שנמצא בבדיקה. שימו לב: קרדיט שנטען אינו מוחזר."},
+        {"title":"צרו חשבון","text":"לחצו על הכפתור למטה. תגיעו לקונסול של xAI. במסך [[Create your API account]] אפשר להירשם עם Google (בתמונה מסומן בחץ), עם X, Apple, GitHub או אימייל. ההרשמה עצמה נבדקה מישראל והצליחה.","link":{"url":"https://console.x.ai","label":"פתחו את הקונסול של xAI"},"image":{"src":"assets/img/xai-1-signup.jpg","alt":"מסך Create your API account עם כפתורי Continue with Google (מסומן בחץ), X, Apple ו-GitHub, ושדה אימייל","captured":"2026-10-17"}},
+        {"title":"אשרו כניסה עם Google","text":"אם נרשמתם עם Google, יופיע מסך שמבקש רשות לראות את השם והאימייל שלכם. לחצו \"המשך\".","image":{"src":"assets/img/xai-2-google-consent.jpg","alt":"מסך כניסה אל xAI באמצעות Google עם כפתורים המשך וביטול. השם והאימייל מוסתרים בצילום","captured":"2026-10-17"}},
+        {"title":"היכנסו ל־API keys","text":"בתפריט הצדדי לחצו [[API keys]]. אם אין לכם עדיין מפתחות מופיעה ההודעה [[No personal API keys yet]]. לחצו [[Create API key]] (בתמונה מסומן בחץ).","image":{"src":"assets/img/xai-3-api-keys.jpg","alt":"עמוד API keys בקונסול xAI עם רשימה ריקה, וחץ אדום שמצביע על הכפתור Create API key","captured":"2026-10-17"}},
+        {"title":"שימו לב לסוג המפתח","text":"בחלון [[New API key]] יש שני סוגי מפתחות: [[Cursor]] ו־[[Grok Inference]]. ברירת המחדל היא [[Cursor]], והוא מיועד לסוכנים ולכלי Cursor ואינו עובד מול מודלי Grok. אם יצרתם מפתח כזה, הכלי שלכם יקבל שגיאה כמו [[Incorrect API key provided]]. לחצו על [[Grok Inference]].","image":{"src":"assets/img/xai-4-new-key-types.jpg","alt":"חלון New API key עם שתי לשוניות: Cursor (נבחרת כברירת מחדל) ו-Grok Inference, ושדות שם, תוקף והרשאות","captured":"2026-10-17"}},
+        {"title":"כאן נדרש תשלום","text":"בלשונית [[Grok Inference]] מופיעה ההודעה: [[Add a payment method to create Grok API keys]]. כלומר אי אפשר ליצור מפתח כזה בלי להוסיף אמצעי תשלום ולהטעין קרדיט ([[Add credits]]). זה הנקודה שבה עצרנו, ולא הוספנו תשלום. מכאן ואילך השלבים לא נבדקו אצלנו.","image":{"src":"assets/img/xai-5-grok-inference-payment.jpg","alt":"חלון New API key בלשונית Grok Inference, עם ההודעה Add a payment method to create Grok API keys, ושימוש מקרדיטים שנטענים מראש, וכפתור Add credits","captured":"2026-10-17"}},
+        {"title":"אם יצרתם בטעות מפתח Cursor","text":"מפתח מסוג [[Cursor]] יופיע ברשימה עם הסוג הזה ועם ההרשאה [[agent:*]]. הוא לא יעבוד מול מודלי Grok. אפשר למחוק אותו ולהשאיר את הרשימה נקייה.","image":{"src":"assets/img/xai-6-cursor-key.jpg","alt":"רשימת מפתחות עם מפתח אחד מסוג Cursor, עם ההרשאה agent:*. סיומת המפתח מוסתרת בצילום","captured":"2026-10-17"}}
       ]
     }
   ]
