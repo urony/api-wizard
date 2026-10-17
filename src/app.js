@@ -121,6 +121,13 @@ function intro() {
     ),
     h('p', { class: 'notice' }, 'האתר הזה לא מבקש את המפתח שלכם ולא שומר אותו. המפתח נוצר רק באתר הספק.'),
 
+    h('div', { class: 'tip', role: 'note' },
+      h('h2', {}, 'המלצה לפני שמתחילים: חשבון Google נפרד'),
+      h('p', {}, 'כדי ליצור מפתח אצל חלק מהספקים (למשל Gemini של Google) צריך חשבון Google. מומלץ לפתוח חשבון נפרד, שישמש רק לכלי הוראה, ולא להשתמש בחשבון האישי או בחשבון של בית הספר.'),
+      h('p', {}, 'כך המידע האישי שלכם נשאר נפרד, ואם חשבון בית הספר חסום, זה לא מפריע. פתיחת החשבון לוקחת כמה דקות, ויש לנו מדריך מצולם.'),
+      h('button', { type: 'button', class: 'btn btn-tip', onclick: openAccountGuide }, 'איך פותחים חשבון Google נפרד'),
+    ),
+
     h('button', { type: 'button', class: 'btn', onclick: () => go({ screen: 'entry' }) }, 'בואו נתחיל'),
   );
 }
@@ -445,7 +452,7 @@ async function loadJson(path) {
 function renderFooter() {
   footerLinks.replaceChildren();
   const url = data.tools.submissionUrl;
-  if (isSafeHttpsUrl(url) && !url.includes('OWNER')) {
+  if (isSafeHttpsUrl(url)) {
     footerLinks.append(externalLink(url, 'רוצים להוסיף כלי שלכם?'), ' · ');
   }
   footerLinks.append(

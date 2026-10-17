@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "submissionUrl": "https://github.com/urony/api-wizard/issues/new",
+  "submissionUrl": null,
   "tools": [
     {
       "id": "cardiac-simulator",

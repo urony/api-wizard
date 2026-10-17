@@ -12,6 +12,9 @@
   --info-border: #0b5cad;
   --danger: #a31515;
   --focus: #ff8c00;
+  --tip-bg: #fff0dc;
+  --tip-border: #b85600;
+  --tip-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +31,9 @@
     --info-bg: #14283d;
     --info-border: #7bb8ff;
     --danger: #ff8a8a;
+    --tip-bg: #3b2208;
+    --tip-border: #ff9b3d;
+    --tip-text: #1d1000;
   }
 }
 
@@ -143,6 +149,16 @@ a { color: var(--primary); text-underline-offset: 0.15em; }
   border-radius: 0.4rem;
 }
 .warning { border-inline-start-color: var(--warn-border); background: var(--warn-bg); }
+
+.tip {
+  border: 3px solid var(--tip-border);
+  background: var(--tip-bg);
+  border-radius: 0.8rem;
+  padding: 1rem 1.25rem 0.5rem;
+  margin: 0 0 1.25rem;
+}
+.tip h2 { margin-top: 0; }
+.btn-tip { background: var(--tip-border); border-color: var(--tip-border); color: var(--tip-text); }
 
 .badge {
   display: inline-block;

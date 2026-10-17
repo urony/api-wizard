@@ -31,8 +31,8 @@ npm test
 ## הוספת כלי
 הוסיפו אובייקט ב־`data/tools.json`. אל תסמנו `compatibilityVerified` בלי שבדקתם בפועל שהמפתח עובד בכלי עם הספקים שרשמתם.
 
-## עדכון כתובת ההגשה
-ב־`data/tools.json` החליפו את `OWNER` בשם המשתמש שלכם ב־GitHub בשדה `submissionUrl`. עד אז הקישור "רוצים להוסיף כלי שלכם?" לא יוצג.
+## הקישור "רוצים להוסיף כלי שלכם?"
+הקישור מוסתר כרגע. כדי להציג אותו, הכניסו כתובת https בשדה `submissionUrl` ב־`data/tools.json` (למשל טופס או כתובת Issues). `null` מסתיר אותו.
 
 ## פרסום ב־GitHub Pages
 1. העלו את הקבצים ל־repository ב־GitHub (למשל בשם `api-wizard`).
