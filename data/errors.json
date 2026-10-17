@@ -25,7 +25,7 @@
     },
     {
       "id": "quota",
-      "patterns": ["insufficient[_ ]quota", "billing[_ ]required", "exceeded your current quota", "quota exceeded", "\\b402\\b", "payment required", "out of credits", "credit balance", "resource[_ ]exhausted"],
+      "patterns": ["insufficient[_ ]quota", "billing[_ ]required", "exceeded your current quota", "quota exceeded", "\\b402\\b", "payment required", "out of credits", "no credits", "credit balance", "resource[_ ]exhausted"],
       "title": "נגמרה המכסה או הקרדיט",
       "explanation": "המכסה החינמית או הקרדיט נגמרו, או שהחשבון דורש אמצעי תשלום.",
       "suggestions": [
