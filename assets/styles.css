@@ -12,6 +12,8 @@
   --info-border: #0b5cad;
   --danger: #a31515;
   --focus: #ff8c00;
+  --ok: #1b6e3a;
+  --ok-bg: #e4f5ea;
   --tip-bg: #fff0dc;
   --tip-border: #b85600;
   --tip-text: #ffffff;
@@ -31,6 +33,8 @@
     --info-bg: #14283d;
     --info-border: #7bb8ff;
     --danger: #ff8a8a;
+    --ok: #5fd08a;
+    --ok-bg: #12301d;
     --tip-bg: #3b2208;
     --tip-border: #ff9b3d;
     --tip-text: #1d1000;
@@ -159,6 +163,15 @@ a { color: var(--primary); text-underline-offset: 0.15em; }
 }
 .tip h2 { margin-top: 0; }
 .btn-tip { background: var(--tip-border); border-color: var(--tip-border); color: var(--tip-text); }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; padding: 0; }
+.chip { padding: 0.3rem 0.8rem; border-radius: 2rem; border: 2px solid var(--border); font-weight: 600; font-size: 1rem; }
+.chip-ok { border-color: var(--ok); background: var(--ok-bg); }
+.chip-warn { border-color: var(--warn-border); background: var(--warn-bg); }
+.chip-unknown { border-color: var(--border); background: var(--bg); color: var(--muted); }
+.small { font-size: 0.95rem; color: var(--muted); margin: 0 0 0.75rem; }
+.more { margin-top: 0.5rem; }
+.more summary { cursor: pointer; font-weight: 700; min-height: 2.75rem; display: flex; align-items: center; }
 
 .paid-providers { margin: 0 0 1.25rem; border: 1px solid var(--border); border-radius: 0.6rem; padding: 0.25rem 1rem 0.5rem; }
 .paid-providers summary { cursor: pointer; font-weight: 700; min-height: 2.75rem; display: flex; align-items: center; }

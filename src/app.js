@@ -250,62 +250,64 @@ function compatibilityNote(result) {
   return h('p', { class: 'notice' }, 'זו המלצה כללית. לפני שמתחילים, כדאי לבדוק בכלי שלכם אילו ספקים הוא תומך בהם, כדי שהמפתח יתאים.');
 }
 
+function chip(text, tone) {
+  const mark = { ok: '✓ ', warn: '! ', unknown: '? ' }[tone];
+  return h('li', { class: `chip chip-${tone}` }, mark, text);
+}
+
+// שלוש עובדות שהמורה צריך מיד: עלות, כרטיס אשראי וזמינות בישראל.
+function highlights(provider) {
+  const free = { yes: ['חינמי', 'ok'], partial: ['חינמי חלקית', 'ok'], no: ['בתשלום', 'warn'], not_verified: ['חינם: לא אומת', 'unknown'] }[provider.freeTier] || ['חינם: לא אומת', 'unknown'];
+  const card = { no: ['בלי כרטיס אשראי', 'ok'], yes: ['דורש כרטיס אשראי', 'warn'], not_verified: ['כרטיס אשראי: לא אומת', 'unknown'] }[provider.creditCardRequired] || ['כרטיס אשראי: לא אומת', 'unknown'];
+  const israel = { yes: ['זמין בישראל', 'ok'], no: ['לא זמין בישראל', 'warn'], not_verified: ['זמינות בישראל: לא אומתה', 'unknown'] }[provider.availableInIsrael] || ['זמינות בישראל: לא אומתה', 'unknown'];
+  return h('ul', { class: 'chips', 'aria-label': 'עיקרי הדברים' }, ...[free, card, israel].map(([text, tone]) => chip(text, tone)));
+}
+
 function providerCard(provider) {
   const stale = isStale(provider.lastVerified);
-  const days = daysSince(provider.lastVerified);
   const models = (provider.supportedModels || []).filter((m) => m !== 'not_verified');
-
-  const facts = h('dl', { class: 'facts' },
-    fact('מסלול חינמי', show(provider.freeTier, FREE_LABELS)),
-    fact('כרטיס אשראי', show(provider.creditCardRequired, TRI_LABELS)),
-    fact('אימות נוסף', show(provider.requiresIdentityVerification, IDENTITY_LABELS)),
-    fact('זמין בישראל', show(provider.availableInIsrael, TRI_LABELS)),
-    fact('מכסות', show(provider.rateLimits)),
-    fact('מודלים', models.length ? models.join(', ') : 'לא אומת'),
-    fact('הגבלות גיל', show(provider.ageRestrictions)),
-  );
 
   const card = h('article', { class: 'card' },
     h('h2', {}, provider.name),
     h('p', {}, provider.summary),
-    provider.freeTierNote ? h('p', {}, provider.freeTierNote) : null,
-    facts,
+    highlights(provider),
   );
 
-  if (provider.freeTier === 'not_verified' || provider.freeTier === 'no') {
-    card.append(h('p', { class: 'warning' }, 'לא אומת שיש מסלול חינמי. ייתכן שתצטרכו לשלם כדי להשתמש במפתח.'));
-  }
   if (provider.dataUsedForTrainingOnFree === 'yes') {
     card.append(h('p', { class: 'warning' }, 'במסלול החינמי הנתונים שאתם שולחים עשויים לשמש לשיפור או לאימון מודלים. אל תזינו מידע אישי או רפואי של תלמידים.'));
   } else if (provider.dataUsedForTrainingOnFree === 'not_verified') {
     card.append(h('p', { class: 'notice' }, 'לא אימתנו מה קורה לנתונים שנשלחים. כברירת מחדל, אל תזינו מידע אישי או רפואי של תלמידים.'));
   }
-  if (provider.privacyNotes && provider.privacyNotes !== 'not_verified') {
-    card.append(h('p', {}, h('strong', {}, 'פרטיות: '), provider.privacyNotes));
-  }
 
-  card.append(h('p', {},
-    `נבדק לאחרונה: ${provider.lastVerified}`,
-    stale ? ' ' : null,
-    stale ? h('span', { class: 'badge' }, 'דורש בדיקה מחדש') : null,
-  ));
   if (provider.verificationLevel === 'manually_verified') {
-    card.append(h('p', { class: 'notice' }, `ההרשמה ויצירת המפתח נבדקו בפועל מישראל (${provider.lastVerified}). פרטים שמסומנים "לא אומת" עדיין לא נבדקו.`));
+    card.append(h('p', { class: 'small' }, `ההרשמה ויצירת המפתח נבדקו בפועל מישראל (${provider.lastVerified}).`));
   } else if (provider.verificationLevel === 'partially_verified') {
-    card.append(h('p', { class: 'notice' }, `ההרשמה נבדקה בפועל מישראל (${provider.lastVerified}). חלק מהפרטים עדיין לא אומתו.`));
-  } else if (provider.verificationLevel === 'desk_research') {
-    card.append(h('p', { class: 'notice' }, 'המידע נאסף מתיעוד ומאתרים ברשת, ועדיין לא נבדק בהרשמה אמיתית. לפני החלטה חשובה, ודאו אצל הספק.'));
+    card.append(h('p', { class: 'small' }, `ההרשמה נבדקה בפועל מישראל (${provider.lastVerified}). חלק מהפרטים עדיין לא אומתו.`));
+  } else {
+    card.append(h('p', { class: 'small' }, 'המידע נאסף מתיעוד ומאתרים ברשת, ועדיין לא נבדק בהרשמה אמיתית ולא מצולם. לפני החלטה חשובה, ודאו אצל הספק.'));
   }
-  if (days !== null && days < 0) {
-    card.append(h('p', {}, 'תאריך הבדיקה נראה לא תקין.'));
-  }
+  if (stale) card.append(h('p', { class: 'small' }, h('span', { class: 'badge' }, 'דורש בדיקה מחדש')));
 
+  const details = h('details', { class: 'more' }, h('summary', {}, 'כל הפרטים: מכסות, פרטיות ומקורות'));
+  if (provider.freeTierNote) details.append(h('p', {}, provider.freeTierNote));
+  details.append(h('dl', { class: 'facts' },
+    fact('מסלול חינמי', show(provider.freeTier, FREE_LABELS)),
+    fact('אימות נוסף', show(provider.requiresIdentityVerification, IDENTITY_LABELS)),
+    fact('מכסות', show(provider.rateLimits)),
+    fact('מודלים', models.length ? models.join(', ') : 'לא אומת'),
+    fact('הגבלות גיל', show(provider.ageRestrictions)),
+  ));
+  if (provider.privacyNotes && provider.privacyNotes !== 'not_verified') {
+    details.append(h('p', {}, h('strong', {}, 'פרטיות: '), provider.privacyNotes));
+  }
+  details.append(h('p', { class: 'small' }, `נבדק לאחרונה: ${provider.lastVerified}`));
   const sources = (provider.officialSources || []).filter(isSafeHttpsUrl);
   if (sources.length) {
     const list = h('ul', { class: 'tips' });
     sources.forEach((src, i) => list.append(h('li', {}, externalLink(src, `מקור ${i + 1}`))));
-    card.append(h('details', {}, h('summary', {}, 'מקורות רשמיים ותנאי שימוש'), list));
+    details.append(h('p', {}, h('strong', {}, 'מקורות רשמיים ותנאי שימוש:')), list);
   }
+  card.append(details);
   return card;
 }
 

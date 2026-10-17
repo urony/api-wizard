@@ -30,7 +30,7 @@
       "steps": [
         {"title":"היכנסו עם חשבון Google","text":"בכל הצעדים הבאים היו מחוברים לאותו חשבון Google. מומלץ חשבון נפרד לכלים (נדרש גיל 18 ומעלה). אם Google מבקשת לאמת שוב, למשל במסך \"Verify it's you\" או בקוד QR, עקבו אחרי ההוראות שעל המסך. הצילומים כאן באנגלית. אם Google שלכם בעברית, יופיעו אותן אפשרויות בעברית.","image":{"src":"assets/img/gemini-1-signin.jpg","alt":"מסך כניסה לחשבון Google עם שדה סיסמה וכפתור Next. כתובת האימייל מוסתרת בצילום","captured":"2026-10-17"},"helper":{"guideId":"google-account","label":"אין לי חשבון מתאים? פתיחת חשבון Google נפרד לכלים"}},
         {"title":"אשרו את תנאי Google Cloud (פעם אחת)","text":"לחצו על הכפתור למטה. בפעם הראשונה תופיע בקשה לבחור מדינה ולאשר תנאי שימוש. בחרו את המדינה שלכם, סמנו את תיבת ההסכמה ולחצו [[Agree and continue]]. בלי האישור הזה, יצירת פרויקט ב־AI Studio עלולה להיכשל. שימו לב: ייתכן שיוצע לכם ניסיון חינמי עם 300 דולר ([[Try for free]] או [[Start free]]). אין צורך בו, ואין ללחוץ עליו, כי הוא דורש אמצעי תשלום. אם כבר אישרתם בעבר, אפשר לדלג.","link":{"url":"https://console.cloud.google.com/","label":"פתחו את Google Cloud"},"image":{"src":"assets/img/gemini-3-cloud-terms.jpg","alt":"חלון Welcome to Google Cloud עם בחירת מדינה (Israel), תיבת הסכמה לתנאי שימוש וכפתור Agree and continue. השם והאימייל מוסתרים בצילום","captured":"2026-10-17"}},
-        {"title":"היכנסו ל־Google AI Studio","text":"לחצו על הכפתור למטה. בפעם הראשונה תופיע בקשה לאשר תנאים: סמנו את תיבת האישור הראשונה (חובה, גיל 18 ומעלה) ולחצו [[Continue]]. שימו לב לאזהרה שבחלון: תוכן שנשלח עשוי לשמש לאימון של Google, ולכן אל תזינו מידע אישי או רפואי של תלמידים.","link":{"url":"https://aistudio.google.com/api-keys","label":"פתחו את עמוד המפתחות של Google AI Studio"},"image":{"src":"assets/img/gemini-8-ai-studio-terms.jpg","alt":"חלון Welcome to AI Studio עם תיבות אישור וכפתור Continue. כתובת האימייל מוסתרת בצילום","captured":"2026-10-17"}},
+        {"title":"היכנסו ל־Google AI Studio","text":"לחצו על הכפתור למטה. בפעם הראשונה תופיע בקשה לאשר תנאים: סמנו את תיבת האישור הראשונה (חובה) ולחצו [[Continue]]. התיבה כוללת הצהרה שאתם בני 18 ומעלה ושאתם משתמשים בשירות כמפתחים, למטרות מקצועיות או עסקיות. זו הצהרה של Google ואתם אחראים לה, ולכן קראו אותה לפני האישור. שימו לב לאזהרה שבחלון: תוכן שנשלח עשוי לשמש לאימון של Google, ולכן אל תזינו מידע אישי או רפואי של תלמידים.","link":{"url":"https://aistudio.google.com/api-keys","label":"פתחו את עמוד המפתחות של Google AI Studio"},"image":{"src":"assets/img/gemini-8-ai-studio-terms.jpg","alt":"חלון Welcome to AI Studio עם תיבות אישור וכפתור Continue. כתובת האימייל מוסתרת בצילום","captured":"2026-10-17"}},
         {"title":"לחצו Create API key","text":"בעמוד [[API Keys]] לחצו על [[Create API key]] (בתמונה מסומן בחץ).","image":{"src":"assets/img/gemini-9-api-keys.jpg","alt":"עמוד API Keys ב-AI Studio עם חץ אדום שמצביע על הכפתור Create API key","captured":"2026-10-17"}},
         {"title":"בחרו Create project","text":"בחלון [[Create a new key]] פתחו את הרשימה [[Choose an imported project]]. אם כתוב בה [[No Cloud Projects Available]], בחרו [[Create project]]. כך AI Studio יוצר פרויקט חדש, והוא מקבל מסלול חינמי. אל תבחרו [[Import project]] עם פרויקט שנוצר ידנית ב־Google Cloud: פרויקט כזה מסומן לעיתים כמוגבל.","image":{"src":"assets/img/gemini-14-create-project-menu.jpg","alt":"חלון Create a new key עם רשימה פתוחה ובה Import project ו-Create project","captured":"2026-10-17"}},
         {"title":"תנו שם לפרויקט","text":"בחלון [[Create a new project]] אפשר להשאיר את השם שהוצע או להקליד שם משלכם, למשל \"כלי הוראה\". לחצו [[Create project]].","image":{"src":"assets/img/gemini-15-new-project-dialog.jpg","alt":"חלון Create a new project עם שדה שם פרויקט וכפתורים Cancel ו-Create project","captured":"2026-10-17"}},
@@ -86,7 +86,7 @@
       "id": "openai",
       "providerId": "openai",
       "steps": [
-        {"title":"מה חשוב לדעת לפני שמתחילים","text":"מפתח API של OpenAI הוא שירות בתשלום לפי שימוש, והוא נפרד ממנוי ChatGPT. ייתכן שתידרשו להוסיף אמצעי תשלום או לטעון קרדיט."},
+        {"title":"מה חשוב לדעת לפני שמתחילים","text":"מפתח API של OpenAI הוא שירות בתשלום לפי שימוש, והוא נפרד ממנוי ChatGPT. ייתכן שתידרשו להוסיף אמצעי תשלום או לטעון קרדיט. שימו לב: המדריך הזה מבוסס על תיעוד, ועדיין לא נבדק בהרשמה אמיתית ואין בו צילומי מסך."},
         {"title":"התחברו או הירשמו","text":"לחצו על הכפתור למטה. תגיעו ל־OpenAI Platform. התחברו עם חשבון קיים או צרו חדש."},
         {"title":"צרו מפתח","text":"בעמוד [[API keys]] לחצו [[Create new secret key]]."},
         {"title":"העתיקו ושמרו מיד","text":"בדרך כלל המפתח מוצג במלואו פעם אחת בלבד. העתיקו אותו ושמרו במקום פרטי."},
@@ -97,7 +97,7 @@
       "id": "xai",
       "providerId": "xai",
       "steps": [
-        {"title":"מה חשוב לדעת לפני שמתחילים","text":"ה־API של xAI מחויב בקרדיטים שנרכשים מראש, וללא החזר. לא אומת מסלול חינמי."},
+        {"title":"מה חשוב לדעת לפני שמתחילים","text":"ה־API של xAI מחויב בקרדיטים שנרכשים מראש, וללא החזר. לא אומת מסלול חינמי. שימו לב: המדריך הזה מבוסס על תיעוד, ועדיין לא נבדק בהרשמה אמיתית ואין בו צילומי מסך."},
         {"title":"התחברו לקונסולה","text":"לחצו על הכפתור למטה והתחברו או הירשמו."},
         {"title":"הוסיפו קרדיט אם נדרש","text":"ייתכן שתצטרכו לרכוש קרדיטים לפני שהמפתח יעבוד. חפשו את אזור [[Billing]]."},
         {"title":"צרו מפתח","text":"בעמוד [[API Keys]] צרו מפתח חדש."},
