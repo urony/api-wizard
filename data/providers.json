@@ -9,7 +9,7 @@
       "apiKeyUrl": "https://aistudio.google.com/apikey",
       "apiProtocol": ["native"],
       "freeTier": "yes",
-      "freeTierNote": "מסלול חינמי ללא תשלום, עם מכסות שתלויות במודל. המפתח משויך לפרויקט חינמי שנוצר ב־AI Studio, בלי כרטיס אשראי. פרויקט שנוצר ידנית ב־Google Cloud עלול להיות מסומן כמוגבל.",
+      "freeTierNote": "מסלול חינמי ללא תשלום, עם מכסות שתלויות במודל. המפתח משויך לפרויקט חינמי שנוצר ב־AI Studio, בלי כרטיס אשראי. פרויקט שנוצר ידנית ב־Google Cloud עלול להיות מסומן כמוגבל. שימו לב: מאז 28.5.2026 מפתחות חדשים של AI Studio הם מסוג חדש, ומתחילים ב־AQ. במקום AIza. המפתח תקין, אבל כלי שנבנה למפתחות הישנים, או שמתחבר דרך הכתובת התואמת ל־OpenAI, עלול לדחות אותו (שגיאה 401 או 400). לפי Google, מפתחות מהסוג הישן יפסיקו לעבוד בספטמבר 2026.",
       "creditCardRequired": "no",
       "requiresIdentityVerification": "phone",
       "availableInIsrael": "yes",
@@ -24,6 +24,8 @@
       "lastVerified": "2026-10-17",
       "officialSources": [
         "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://aistudio.google.com/docs/api-key",
+        "https://aistudio.google.com/docs/openai",
         "https://ai.google.dev/gemini-api/docs/billing",
         "https://ai.google.dev/gemini-api/docs/available-regions",
         "https://ai.google.dev/gemini-api/terms"
@@ -107,8 +109,7 @@
       "verificationLevel": "partially_verified",
       "lastVerified": "2026-10-17",
       "officialSources": [
-        "https://help.mistral.ai/en/articles/455206-how-can-i-try-the-api-for-free-with-the-experiment-plan",
-        "https://help.mistral.ai/en/articles/424390-how-do-api-rate-limits-work-and-how-do-i-increase-them"
+        "https://mistral.ai/pricing"
       ],
       "guideId": "mistral"
     },
